@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+
+
+main{
+    width: 240px;
+    margin: 32px auto;
+}
+
+section{
+    border: 4px double red;
+    text-align: center;
+    color: red;
+}
+
+h1{
+    margin: 0%;
+    border-bottom: 2px solid red;
+    font-weight: normal;
+    padding: 8px 0;
+}
+
+p{
+    margin: 0%;
+    font-weight: bold;
+    font-size: 36px;
+    padding: 24px 0;
+}
+
+button{
+    all: unset;
+    width: 100%;
+    background: red;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    margin-top: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px #7a0000;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+button:active{
+    box-shadow: 0 1px #7a0000;
+    transform:translateY(3px)
+}
+
+/*-----------------------*/
+.main__rogo{
+    margin: 30px;
+}
+.main__op{
+
+    width: auto;
+}
+.main__menu{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ggg{
+    display: flex;
+}
+.jangame{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+}
