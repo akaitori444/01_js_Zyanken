@@ -169,7 +169,7 @@ Spider.prototype.die = function () {
 
 PlayState = {};
 
-const LEVEL_COUNT = 2;
+const LEVEL_COUNT = 4;
 
 PlayState.init = function (data) {
     this.game.renderer.renderSession.roundPixels = true;
@@ -196,7 +196,9 @@ PlayState.init = function (data) {
 PlayState.preload = function () {
     this.game.load.json('level:0', 'data/level00.json');
     this.game.load.json('level:1', 'data/level01.json');
-
+    this.game.load.json('level:2', 'data/level02.json');
+    this.game.load.json('level:3', 'data/level03.json');
+    
     this.game.load.image('font:numbers', 'images/numbers.png');
 
     this.game.load.image('background', 'images/background2.png');
@@ -212,6 +214,11 @@ PlayState.preload = function () {
 
     this.game.load.spritesheet('coin', 'images/coin_animated.png', 22, 22);
     this.game.load.spritesheet('spider', 'images/spider.png', 42, 32);
+/*
+    this.game.load.spritesheet('spider', 'images/spider.png', 42, 32);
+    this.game.load.spritesheet('spider', 'images/spider.png', 42, 32);
+*/
+
     this.game.load.spritesheet('hero', 'images/hero.png', 36, 42);
     this.game.load.spritesheet('door', 'images/door.png', 42, 66);
     this.game.load.spritesheet('icon:key', 'images/key_icon.png', 34, 30);
@@ -334,6 +341,21 @@ PlayState._spawnCharacters = function (data) {
         let sprite = new Spider(this.game, spider.x, spider.y);
         this.spiders.add(sprite);
     }, this);
+
+    // 蜘蛛2の出現
+/*
+    data.spiders.forEach(function (spider) {
+        let sprite = new Spider(this.game, spider.x, spider.y);
+        this.spiders.add(sprite);
+    }, this);
+*/
+    // 蜘蛛2の出現
+/*
+    data.spiders.forEach(function (spider) {
+        let sprite = new Spider(this.game, spider.x, spider.y);
+        this.spiders.add(sprite);
+    }, this);
+*/
 
     // キャラの出現
     this.hero = new Hero(this.game, data.hero.x, data.hero.y);
