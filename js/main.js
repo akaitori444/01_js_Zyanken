@@ -118,7 +118,7 @@ Hero.prototype._getAnimationName = function () {
 
     return name;
 };
-
+/*----------------------------------------------------------------------------------*/ 
 //
 // 蜘蛛の敵
 //
@@ -161,7 +161,7 @@ Spider.prototype.die = function () {
         this.kill();
     }, this);
 };
-
+/*----------------------------------------------------------------------------------*/ 
 
 // =============================================================================
 // ゲームの状態
@@ -250,6 +250,8 @@ PlayState.update = function () {
     this.keyIcon.frame = this.hasKey ? 1 : 0;
 };
 
+/*----------------------------------------------------------------------------------*/ 
+//接触判定
 PlayState._handleCollisions = function () {
     this.game.physics.arcade.collide(this.spiders, this.platforms);
     this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
@@ -267,6 +269,7 @@ PlayState._handleCollisions = function () {
             return this.hasKey && hero.body.touching.down;
         }, this);
 };
+/*----------------------------------------------------------------------------------*/ 
 
 PlayState._handleInput = function () {
     if (this.keys.left.isDown) { // キャラを左に移動
@@ -337,6 +340,7 @@ PlayState._spawnCharacters = function (data) {
     this.game.add.existing(this.hero);
 };
 
+//コイン
 PlayState._spawnCoin = function (coin) {
     let sprite = this.coins.create(coin.x, coin.y, 'coin');
     sprite.anchor.set(0.5, 0.5);
@@ -384,7 +388,8 @@ PlayState._onHeroVsEnemy = function (hero, enemy) {
         enemy.die();
         this.sfx.stomp.play();
     }
-    //else if(janken_end = 1) { hero.bounce();enemy.die();this.sfx.stomp.play();}
+    // じゃんけん勝利時に敵を倒すギミック
+    else if(janken_end = 1) { hero.bounce();enemy.die();this.sfx.stomp.play();}
     else { // ゲームオーバー→ゲーム再開
         this.sfx.stomp.play();
         this.game.state.restart(true, false, {level: this.level});
@@ -427,7 +432,6 @@ PlayState._createHud = function () {
 // =============================================================================
 // エントリーポイント
 // =============================================================================
-
 window.onload = function () {
     let game = new Phaser.Game(960, 600, Phaser.AUTO, 'game');
     game.state.add('play', PlayState);
